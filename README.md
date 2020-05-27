@@ -1,5 +1,13 @@
 # [Tutorial](https://flask.palletsprojects.com/en/1.1.x/tutorial/static/)
 
+I'm following the flask.palletsprojects.com tutorial for creating a blog. This
+repo is basically a copy/paste of it, where I've added more documentation /
+comments to the code as I slowly folow the tutorial.
+
+I will follow up this tutorial by building other web-app projects.
+
+
+
 ## Tutorial Notes
 
 A micro-framework glues together other tools that get the job done. For example,
