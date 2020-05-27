@@ -1,3 +1,7 @@
+# How to deploy / access (developement)
+
+# How to deplot / access (production)
+
 # [Tutorial](https://flask.palletsprojects.com/en/1.1.x/tutorial/static/)
 
 I'm following the flask.palletsprojects.com tutorial for creating a blog. This
