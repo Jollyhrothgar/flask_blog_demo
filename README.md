@@ -33,7 +33,6 @@ application into blueprints.
 
 ## [Bookmark](https://flask.palletsprojects.com/en/1.1.x/tutorial/blog/#the-blueprint)
 
-
 ### Environment
 
 Set the following bash environment variables:
@@ -64,6 +63,14 @@ Click defines some basic command-line tool functions, such as:
 
 Its like argparse or optparse, but different (easier..?)
 
+## HTTP
+
+Some codes used here are:
+
+* `404` - "Not Found"
+* `403` - "Forbidden"
+* `401` - "Unauthorized"
+
 ## Flask
 
 Flask applications are instances of the Flask class - configurations, urls, etc
@@ -80,6 +87,26 @@ In this tutorial, we package the flask application factory in the `__init__.py`
 module file to expose it at the module level.
 
 ### Concepts
+
+#### Endpoints
+
+E.g. `'@app.route('/endpoint')` will redirect the request to the decorated
+function, which can be processed with the flask request object which is passed
+into the function.
+
+Routes can have parameters as part of the route with types - 
+`/<int:value>/endpoint` - flask captures and input c\]\]hecks for integer as part of the
+route.
+
+#### `url_for('static, 'loc')`
+
+Rather than supplying the directories directly, we can pass them in using the
+jinja templating language.
+
+```http
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='unnamed.png'}}">
+```
 
 #### Factory
 

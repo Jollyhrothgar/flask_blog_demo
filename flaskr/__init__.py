@@ -2,52 +2,50 @@ import os
 
 from flask import Flask
 
+
 def create_app(test_config=None):
-    """
-    The default factory method we use to create apps for flaskr.
-
-    Args:
-        test_config - a configuration for tests that can be used instead of the
-        instance configuration.
-    Returns:
-        A flask app.
-    """
-
+    """Create and configure an instance of the Flask application."""
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite')
+        # a default secret that should be overridden by instance config
+        SECRET_KEY="dev",
+        # store the database in the instance folder
+        DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
     )
 
     if test_config is None:
-        # load the instance config, if it exists, when not testing.
-        app.config.from_pyfile('config.py', silent=True)
+        # load the instance config, if it exists, when not testing
+        app.config.from_pyfile("config.py", silent=True)
     else:
-        # load the test config if passed in 
-        app.config.from_mapping(test_config)
+        # load the test config if passed in
+        app.config.update(test_config)
 
-    # Make sure the instance folder exists
+    # ensure the instance folder exists
     try:
         os.makedirs(app.instance_path)
     except OSError:
         pass
 
-    # Debugging route - make sure app works.
-    @app.route('/hello')
+    @app.route("/hello")
     def hello():
-        return "<h1> Hello, World! </h1>"
+        return "Hello, World!"
 
-    # Add database function context to the app
-    from . import db
+    # register the database commands
+    from flaskr import db
+
     db.init_app(app)
 
-    # Add authentication blueprint to the app
-    from . import auth
-    app.register_blueprint(auth.bp)
+    # apply the blueprints to the app
+    from flaskr import auth, blog
 
-    # Add the blog blueprint to the app
-    from . import blog
+    app.register_blueprint(auth.bp)
     app.register_blueprint(blog.bp)
-    app.add_url_rule('/', endpoint='index')
+
+    # make url_for('index') == url_for('blog.index')
+    # in another app, you might define a separate main index here with
+    # app.route, while giving the blog blueprint a url_prefix, but for
+    # the tutorial the blog will be the main index
+    app.add_url_rule("/", endpoint="index")
 
     return app
+
