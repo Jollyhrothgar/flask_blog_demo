@@ -1,5 +1,13 @@
 # How to deploy / access (developement)
 
+Assuming you have a virtual environment with flask + dependencies (sorry, no
+complete requirements file yet, but its basically flask), you can source the
+env file, then run:
+
+```bash
+flask init.db; flask run
+```
+
 # How to deplot / access (production)
 
 # [Tutorial](https://flask.palletsprojects.com/en/1.1.x/tutorial/static/)
