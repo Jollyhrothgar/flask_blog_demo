@@ -30,7 +30,7 @@ Note that I've already made apps following the model in the
 template, but for a larget project (like battleshark), I'll need to factor the
 application into blueprints.
 
-## [Bookmark](https://flask.palletsprojects.com/en/1.1.x/tutorial/blog/#the-blueprint)
+## [Bookmark](https://flask.palletsprojects.com/en/1.1.x/tutorial/tests/)
 
 ### Environment
 
