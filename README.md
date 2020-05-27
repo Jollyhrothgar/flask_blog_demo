@@ -19,7 +19,6 @@ comments to the code as I slowly folow the tutorial.
 I will follow up this tutorial by building other web-app projects.
 
 
-
 ## Tutorial Notes
 
 A micro-framework glues together other tools that get the job done. For example,
@@ -51,6 +50,18 @@ flask run
 
 # Concepts With One-Liner Explainations
 
+## [`setup.py`](https://packaging.python.org/tutorials/packaging-projects/)
+
+`setuptools` manages dependencies and packaging python tools. In this case, we
+include in the `MANIFEST.in` details about the database schema, static,
+templates folders which are needed for the application to run.
+
+*   Install the server
+
+```bash
+pip install -e .
+```
+
 ## [click](https://click.palletsprojects.com/en/7.x/)
 
 Click is a python package for creating command line interfaces, it stands for:
@@ -67,9 +78,9 @@ Its like argparse or optparse, but different (easier..?)
 
 Some codes used here are:
 
-* `404` - "Not Found"
-* `403` - "Forbidden"
-* `401` - "Unauthorized"
+*   `404` - "Not Found"
+*   `403` - "Forbidden"
+*   `401` - "Unauthorized"
 
 ## Flask
 
@@ -118,6 +129,12 @@ This is useful for adding modules to the code to incrementally expand functions
 of the app and to add functions to the app when the context requires it.
 
 ### Flask Libraries
+
+#### Unit Tests Library
+
+Flask builds in a test-server which we can use to unit-test our app. To run our
+unit tests, we need to install the app in the python environment. We use
+`pytest` and `coverage`.
 
 #### Flask app functions
 
